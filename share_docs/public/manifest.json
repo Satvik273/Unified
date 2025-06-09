@@ -1,0 +1,27 @@
+{
+  "name": "SecureGovDocs",
+  "short_name": "GovDocs",
+  "description": "A secure platform for sharing government documents.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "mstile-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    }
+  ]
+}

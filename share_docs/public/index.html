@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureGovDocs - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SecureGovDocs - A secure platform for sharing government documents." />
+    <meta name="keywords" content="SecureGovDocs, government documents, secure sharing, Aadhaar, email" />
+    <meta name="author" content="SecureGovDocs Team" />
+    <meta name="theme-color" content="#4CAF50" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="SecureGovDocs" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="SecureGovDocs" />
+    <meta name="msapplication-TileColor" content="#4CAF50" />
+    <meta name="msapplication-TileImage" content="mstile-150x150.png" />
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <h1 class="mb-4">Login</h1>
+        <input type="email" id="email" class="form-control mb-3" placeholder="Email" />
+        <input type="password" id="password" class="form-control mb-3" placeholder="Password" />
+        <button id="loginButton" class="btn btn-primary mb-3">Login</button>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        import { login } from './js/auth.js';
+        document.getElementById('loginButton').addEventListener('click', login);
+    </script>
+</body>
+</html>

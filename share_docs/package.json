@@ -1,0 +1,17 @@
+{
+  "name": "share_docs",
+  "version": "1.0.0",
+  "description": "## Features - User Registration with OTP Simulation - Login - Upload, Update, Delete Documents - Share Documents with Family Members - Profile Management - Action Logging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "multer": "^2.0.1"
+  }
+}
