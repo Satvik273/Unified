@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Business Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Business Dashboard</h1>
+    
+    <div class="dashboard-actions mb-4">
+        <a href="{{ url_for('business.post_idea') }}" class="btn btn-primary me-2">
+            <i class="fas fa-lightbulb"></i> Post New Idea
+        </a>
+        <a href="{{ url_for('business.request_loan') }}" class="btn btn-success me-2">
+            <i class="fas fa-money-bill-wave"></i> Request Loan
+        </a>
+        <a href="{{ url_for('business.request_advice') }}" class="btn btn-info">
+            <i class="fas fa-question-circle"></i> Seek Advice
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between">
+            <h4>My Business Ideas</h4>
+            <a href="{{ url_for('business.post_idea') }}" class="btn btn-primary">Post New Idea</a>
+        </div>
+        <div class="card-body">
+            {% if my_ideas %}
+                {% for idea in my_ideas %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>{{ idea.title }}</h5>
+                        <p>{{ idea.description }}</p>
+                        <small class="text-muted">Posted: {{ idea.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No business ideas posted yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Received Proposals</h4>
+        </div>
+        <div class="card-body">
+            {% if proposals %}
+                {% for proposal in proposals %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p>{{ proposal.details }}</p>
+                        <small class="text-muted">From: {{ proposal.investor.username }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No proposals received yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

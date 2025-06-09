@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Advisor Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Advisor Dashboard</h1>
+    
+    <!-- Pending Advice Requests Section -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Pending Advice Requests</h4>
+        </div>
+        <div class="card-body">
+            {% if advice_requests %}
+            <div class="list-group">
+                {% for request in advice_requests %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ request.subject }}</h5>
+                    <p class="mb-1">{{ request.details }}</p>
+                    <small class="text-muted">From: {{ request.business.username }}</small>
+                    <small class="text-muted">Posted: {{ request.date_posted.strftime('%Y-%m-%d') }}</small>
+                    <a href="{{ url_for('advisor.post_advice', request_id=request.id) }}" 
+                       class="btn btn-primary btn-sm float-end">Provide Advice</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="card-text">No pending advice requests.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Given Advice Section -->
+    <div class="card">
+        <div class="card-header">
+            <h4>Your Given Advice</h4>
+        </div>
+        <div class="card-body">
+            {% if given_advice %}
+            <div class="list-group">
+                {% for advice in given_advice %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">Response to: {{ advice.request.subject }}</h5>
+                    <p class="mb-1">{{ advice.information }}</p>
+                    <small class="text-muted">Given to: {{ advice.request.business.username }}</small>
+                    <small class="text-muted">Date: {{ advice.date_posted.strftime('%Y-%m-%d') }}</small>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="card-text">You haven't provided any advice yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

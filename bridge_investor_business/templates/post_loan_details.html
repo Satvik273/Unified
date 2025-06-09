@@ -1,0 +1,10 @@
+<!-- post_loan_details.html -->
+{% extends "base.html" %}
+{% block title %}Post Loan Details{% endblock %}
+{% block content %}
+<h2>Post Loan Details</h2>
+<form method="POST">
+    <textarea name="details" rows="5" class="form-control" placeholder="Enter loan details here..."></textarea><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

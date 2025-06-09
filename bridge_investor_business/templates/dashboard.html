@@ -1,0 +1,45 @@
+<!-- dashboard.html -->
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>{{ title }}</h2>
+
+{% if ideas %}
+<h4>Your Business Ideas:</h4>
+<ul>
+    {% for idea in ideas %}
+    <li><strong>{{ idea.title }}</strong>: {{ idea.description }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('business.post_idea') }}" class="btn btn-primary">Post a New Idea</a>
+{% else %}
+<p>No business ideas posted yet.</p>
+<a href="{{ url_for('business.post_idea') }}" class="btn btn-primary">Post a New Idea</a>
+{% endif %}
+
+{% if loans %}
+<h4>Your Loan Details:</h4>
+<ul>
+    {% for loan in loans %}
+    <li>{{ loan.details }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('banker.post_loan') }}" class="btn btn-primary">Post Loan Details</a>
+{% else %}
+<p>No loan details posted yet.</p>
+<a href="{{ url_for('banker.post_loan') }}" class="btn btn-primary">Post Loan Details</a>
+{% endif %}
+
+{% if advices %}
+<h4>Your Business Advice:</h4>
+<ul>
+    {% for advice in advices %}
+    <li>{{ advice.information }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('advisor.post_advice') }}" class="btn btn-primary">Post Advice</a>
+{% else %}
+<p>No advice posted yet.</p>
+<a href="{{ url_for('advisor.post_advice') }}" class="btn btn-primary">Post Advice</a>
+{% endif %}
+{% endblock %}

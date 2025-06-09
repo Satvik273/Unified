@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Request Business Advice{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Request Business Advice</h2>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.subject.label(class="form-label") }}
+                    {{ form.subject(class="form-control") }}
+                    {% if form.subject.errors %}
+                        {% for error in form.subject.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ form.details.label(class="form-label") }}
+                    {{ form.details(class="form-control", rows=5) }}
+                    {% if form.details.errors %}
+                        {% for error in form.details.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {{ form.submit(class="btn btn-primary") }}
+                <a href="{{ url_for('business.dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

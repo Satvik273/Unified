@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Proposal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Submit Proposal</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Business Idea Details</h4>
+        </div>
+        <div class="card-body">
+            <h5>{{ idea.title }}</h5>
+            <p>{{ idea.description }}</p>
+            <small class="text-muted">Posted by: {{ idea.business.username }}</small>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Your Proposal</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.details.label(class="form-label") }}
+                    {{ form.details(class="form-control", rows=5) }}
+                    {% if form.details.errors %}
+                        {% for error in form.details.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {{ form.submit(class="btn btn-primary") }}
+                <a href="{{ url_for('investor.dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
